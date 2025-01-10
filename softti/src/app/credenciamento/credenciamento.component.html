@@ -21,17 +21,74 @@
           <button type="button" class="btn-close" (click)="closeModel()"></button>
         </div>
   
-        <!-- Modal body -->
-        <div class="modal-body">
-          Modal body..
-        </div>
+       <!-- Modal body -->
+<div class="modal-body">
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="">Tipo Cliente</label>
+        <input type="text" [(ngModel)]="clientObj.tipo"class="form-control-sm" placeholder="Tipo">
+      </div>
+  
+      <div class="col-12 mb-3">
+        <label for="">Documento</label>
+        <input type="text" [(ngModel)]="clientObj.documento" class="form-control-sm" placeholder="Documento">
+      </div>
+  
+      <div class="col-12 mb-3">
+        <label for="">Nome / Razão Social</label>
+        <input type="text" [(ngModel)]="clientObj.nomeRazaoSocial" class="form-control-sm" placeholder="Nome / Razão Social">
+      </div>
+  
+      <div class="col-12 mb-3">
+        <label for="">Nome Fantasia</label>
+        <input type="text" [(ngModel)]="clientObj.nomeFantasia" class="form-control-sm" placeholder="Nome Fantasia">
+      </div>
+  
+      <div class="col-12 mb-3">
+        <label for="">CEP</label>
+        <input type="text" [(ngModel)]="clientObj.cep" class="form-control-sm" placeholder="CEP">
+      </div>
+  
+      <div class="col-12 mb-3">
+        <label for="">Endereço</label>
+        <input type="text" [(ngModel)]="clientObj.endereco" class="form-control-sm" placeholder="Endereço">
+      </div>
+  
+      <div class="col-12 mb-3">
+        <label for="">Bairro</label>
+        <input type="text" [(ngModel)]="clientObj.bairro" class="form-control-sm" placeholder="Bairro">
+      </div>
+  
+      <div class="col-12 mb-3">
+        <label for="">Cidade</label>
+        <input type="text" [(ngModel)]="clientObj.cidade" class="form-control-sm" placeholder="Cidade">
+      </div>
+  
+      <div class="col-12 mb-3">
+        <label for="">Telefone</label>
+        <input type="text" [(ngModel)]="clientObj.telefone" class="form-control-sm" placeholder="Telefone">
+      </div>
+  
+      <div class="col-12 mb-3">
+        <label for="">Email</label>
+        <input type="text" [(ngModel)]="clientObj.email" class="form-control-sm" placeholder="Email">
+      </div>
+  
+    </div>
+  </div>
+  
   
         <!-- Modal footer -->
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" (click)="closeModel()">Fechar</button>
+          <button type="button" class="btn btn-success" (click)="closeModel()">Salvar</button>
         </div>
   
       </div>
     </div>
-  </div>
+
+ 
+
+
+</div>
   
