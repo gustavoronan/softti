@@ -21,6 +21,20 @@ export class CredenciamentoComponent {
   closeModel() {
     if (this.model) {
       this.model.nativeElement.style.display = 'none';
+    } 
+  }
+  
+  //logica que utilizei para salvar no localstorage
+  saveModel(){
+    const isLocalPresent = localStorage.getItem("angular") //verificando se o item se encontra no localstorage
+    if(isLocalPresent != null ){ //se existir
+      const oldArray = JSON.parse(isLocalPresent) //convertendo a string do localstorage em um array novamente
+      oldArray.push(this.clientObj) //adicionando o objeto
+      localStorage.setItem('angular', JSON.stringify(oldArray)) //convertendo a string novamente e salvando no local com a chave
+    } else{
+      const newArr = []
+      newArr.push(this.clientObj)
+      localStorage.setItem('angular', JSON.stringify(newArr))
     }
   }
 }
