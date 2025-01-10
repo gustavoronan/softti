@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="row pt-4"> 
+      <div class="col-6">
+        <h4>Área de Cadastro</h4>
+      </div>
+    
+      <div class="col-6 text-end">
+        <button class="btn btn-outline-success" (click)="openModel()">Adicionar novo Cadastro</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- The Modal -->
+  <div class="modal" id="myModal" #myModal>
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Realizar Novo Cadastro</h4>
+          <button type="button" class="btn-close" (click)="closeModel()"></button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+          Modal body..
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" (click)="closeModel()">Fechar</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  
