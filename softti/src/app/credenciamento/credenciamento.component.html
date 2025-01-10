@@ -1,47 +1,32 @@
-<div class="container">
-    <div class="row pt-4"> 
-      <div class="col-6">
-        <h4>Área de Cadastro</h4>
-      </div>
-    
-      <div class="col-6 text-end">
-        <button class="btn btn-outline-success" (click)="openModel()">Adicionar novo Cadastro</button>
-      </div>
-    </div>
-  </div>
 
+<header>   
+    <h1>Área de Cadastro</h1> 
+    <button class="btn btn-success" (click)="openModel()">Adicionar novo Cadastro</button>   
+</header>
+
+<div class="container">
   <div class="container mt-3">
-    <h6>Cadastros Realizados</h6>          
+    <h2>Cadastros Realizados</h2>          
     <table class="table">
         <thead>
             <tr>
-                <th>Tipo</th>
-                <th>Documento</th>
-                <th>Nome/Razão Social</th>
-                <th>Nome Fantasia</th>
-                <th>CEP</th>
-                <th>Endereço:</th>
-                <th>Bairro</th>
-                <th>Cidade</th>
-                <th>Telefone</th>
-                <th>Email</th>
+                <th class="col-12 col-sm-3">Documento</th>
+                <th class="col-12 col-sm-3">Nome</th>
+                <th class="col-12 col-sm-3">Endereço</th>
             </tr>
         </thead>
+
+
         <tbody>
               @for (item of clientList; track $index) {
             <tr>
-              <td>{{item.tipo}}</td>
-              <td>{{item.documento}}</td>
-              <td>{{item.nomeRazaoSocial}}</td>
-              <td>{{item.nomeFantasia}}</td>
-              <td>{{item.cep}}</td>
-              <td>{{item.endereco}}</td>
-              <td>{{item.bairro}}</td>
-              <td>{{item.cidade}}</td>
-              <td>{{item.telefone}}</td>
-              <td>{{item.email}}</td>
+              <td class="col-12 col-sm-3">{{item.documento}}</td>
+              <td  class="col-12 col-sm-3" >{{item.nomeRazaoSocial}}</td>
+              <td class="col-12 col-sm-3" >{{item.endereco}}</td>
             </tr>
-        }
+             }
+
+
           </tbody>
         </table>
     
@@ -64,53 +49,80 @@
 <div class="modal-body">
     <div class="row">
       <div class="col-12 mb-3">
-        <label for="">Tipo Cliente</label>
-        <input type="text" [(ngModel)]="clientObj.tipo"class="form-control-sm" placeholder="Tipo">
+       <h6>Tipo Cliente</h6>
+        <select id="tipoCliente" [(ngModel)]="clientObj.tipo" class="form-control-sm" required>
+            <option value="fisica">Pessoa Física</option>
+            <option value="juridica">Pessoa Jurídica</option>
+        </select>
+        @if (clientObj.tipo == null) {
+           
+            <p>Campo Obrigatório</p>
+        
+        }
+      
       </div>
    
       <div class="col-12 mb-3">
-        <label for="">Documento</label>
-        <input type="text" [(ngModel)]="clientObj.documento" class="form-control-sm" placeholder="Documento">
+        <h6>Documento</h6>
+        <input type="text" [(ngModel)]="clientObj.documento" class="form-control-sm">
+
+        @if (clientObj.documento == "") {
+                <p>Campo Obrigatório</p> 
+        }
+      
       </div>
   
       <div class="col-12 mb-3">
-        <label for="">Nome / Razão Social</label>
-        <input type="text" [(ngModel)]="clientObj.nomeRazaoSocial" class="form-control-sm" placeholder="Nome / Razão Social">
+        <h6>Nome / Razão Social</h6>
+        <input type="text" [(ngModel)]="clientObj.nomeRazaoSocial" class="form-control-sm" >
+        @if (clientObj.nomeRazaoSocial == "") {
+          
+                <p>Campo Obrigatório</p>
+         
+        }
+      
+      </div>
+  
+      @if (clientObj.tipo == 'juridica') {
+
+          <div class="col-12 mb-3">
+            <h6>Nome Fantasia</h6>
+            <input type="text" [(ngModel)]="clientObj.nomeFantasia" class="form-control-sm">
+          </div>
+
+      }
+  
+      <div class="col-12 mb-3">
+        <h6>CEP</h6>
+        <input type="text" [(ngModel)]="clientObj.cep" class="form-control-sm">
       </div>
   
       <div class="col-12 mb-3">
-        <label for="">Nome Fantasia</label>
-        <input type="text" [(ngModel)]="clientObj.nomeFantasia" class="form-control-sm" placeholder="Nome Fantasia">
+        <h6>Endereço</h6>
+        <input type="text" [(ngModel)]="clientObj.endereco" class="form-control-sm">
       </div>
   
       <div class="col-12 mb-3">
-        <label for="">CEP</label>
-        <input type="text" [(ngModel)]="clientObj.cep" class="form-control-sm" placeholder="CEP">
+        <h6>Bairro</h6>
+        <input type="text" [(ngModel)]="clientObj.bairro" class="form-control-sm">
       </div>
   
       <div class="col-12 mb-3">
-        <label for="">Endereço</label>
-        <input type="text" [(ngModel)]="clientObj.endereco" class="form-control-sm" placeholder="Endereço">
+        <h6>Cidade</h6>
+        <input type="text" [(ngModel)]="clientObj.cidade" class="form-control-sm">
       </div>
   
       <div class="col-12 mb-3">
-        <label for="">Bairro</label>
-        <input type="text" [(ngModel)]="clientObj.bairro" class="form-control-sm" placeholder="Bairro">
+        <h6>Telefone</h6>
+        <input type="text" [(ngModel)]="clientObj.telefone" class="form-control-sm">
       </div>
   
       <div class="col-12 mb-3">
-        <label for="">Cidade</label>
-        <input type="text" [(ngModel)]="clientObj.cidade" class="form-control-sm" placeholder="Cidade">
-      </div>
-  
-      <div class="col-12 mb-3">
-        <label for="">Telefone</label>
-        <input type="text" [(ngModel)]="clientObj.telefone" class="form-control-sm" placeholder="Telefone">
-      </div>
-  
-      <div class="col-12 mb-3">
-        <label for="">Email</label>
-        <input type="text" [(ngModel)]="clientObj.email" class="form-control-sm" placeholder="Email">
+        <h6>Email</h6>
+        <input type="text" [(ngModel)]="clientObj.email" class="form-control-sm">
+        @if (clientObj.email == "") {
+            <p>Campo Obrigatório</p>
+        }
       </div>
   
     </div>
@@ -120,7 +132,10 @@
         <!-- Modal footer -->
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" (click)="closeModel()">Fechar</button>
-          <button type="button" class="btn btn-success" (click)="saveModel()">Salvar</button>
+          <button type="button"
+           class="btn btn-success" (click)="saveModel()"  
+           [disabled]="!clientObj.tipo || !clientObj.documento || !clientObj.nomeRazaoSocial || !clientObj.email" 
+          >Salvar</button>
         </div>
   
       </div>

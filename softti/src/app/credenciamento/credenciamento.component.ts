@@ -49,7 +49,11 @@ export class CredenciamentoComponent implements OnInit {
 
     this.closeModel();
   }
+
+  
 }
+
+
 
 export class Cliente {
   tipo!: 'fisica' | 'juridica';
