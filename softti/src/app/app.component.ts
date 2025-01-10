@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -9,5 +9,18 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'softti';
+  @ViewChild('myModal') model:ElementRef | undefined
+
+  openModel(){
+    const model = document.getElementById("myModal")
+    if (model!= null){
+      model.style.display = 'block'
+    }
+  }
+
+  closeModel(){
+    if(this.model != null){
+      this.model.nativeElement.style.display = 'none';
+    }
+  }
 }
