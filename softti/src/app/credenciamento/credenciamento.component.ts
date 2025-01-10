@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -8,9 +8,17 @@ import { FormsModule } from '@angular/forms';
   imports: [FormsModule],
   standalone: true 
 })
-export class CredenciamentoComponent {
+export class CredenciamentoComponent implements OnInit {
   @ViewChild('myModal') model!: ElementRef;
   clientObj: Cliente  = new Cliente()
+  clientList: Cliente[] = []
+
+  ngOnInit(): void {
+    const listaCliente = localStorage.getItem("angular")
+    if(listaCliente != null){
+      this.clientList = JSON.parse(listaCliente)
+    }
+  }
 
   openModel() {
     if (this.model) {
@@ -23,7 +31,7 @@ export class CredenciamentoComponent {
       this.model.nativeElement.style.display = 'none';
     } 
   }
-  
+
   //logica que utilizei para salvar no localstorage
   saveModel(){
     const isLocalPresent = localStorage.getItem("angular") //verificando se o item se encontra no localstorage
@@ -36,6 +44,10 @@ export class CredenciamentoComponent {
       newArr.push(this.clientObj)
       localStorage.setItem('angular', JSON.stringify(newArr))
     }
+    //apenas recarregando a lista para nao precisar dar reload na pagina
+    this.clientList = JSON.parse(localStorage.getItem("angular") || '[]');
+
+    this.closeModel();
   }
 }
 
@@ -52,7 +64,6 @@ export class Cliente {
   email!: string;
 
   constructor(){
-    this.documento = '';
     this.documento = "";
     this.nomeRazaoSocial = '';
     this.nomeFantasia = '';
